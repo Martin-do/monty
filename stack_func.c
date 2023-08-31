@@ -1,45 +1,21 @@
 #include "monty.h"
 /**
- * _push - push int to a stack
- * @stack: linked lists for monty stack
- * @line_number: number of line opcode occurs on
+ * push_stack - push int to a stack
+ * @top: linked lists for monty stack
+ * @n: number of line opcode occurs on
  */
-void _push(stack_t **stack, unsigned int line_number)
+void push_stack(stack_t **top, unsigned int n)
 {
-	stack_t *new;
-	char *arg;
-	int push_arg;
+	stack_t *new = NULL;
 
-	push_arg = 0;
 	new = malloc(sizeof(stack_t));
-	if (!new)
+	if (new == NULL)
 	{
-		printf("Error: malloc failed\n");
-		error_exit(stack);
+		printf("Error: malloc failed");
 	}
-
-	arg = strtok(NULL, "\n ");
-	if (isnumber(arg) == 1 && arg != NULL)
-	{
-		push_arg = atoi(arg);
-	}
-	else
-	{
-		printf("L%d: usage: push integer\n", line_number);
-		error_exit(stack);
-	}
-
-	if (stk_qk == 1)
-	{
-		add_dnodeint_end(stack, push_arg);
-	}
-
-	if (stk_qk == 0)
-	{
-		add_dnodeint(stack, push_arg);
-	}
-
+	add_dnodeint(top, n);
 }
+
 /**
  * _pall - print all function
  * @stack: pointer to linked list stack

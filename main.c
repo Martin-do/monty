@@ -1,4 +1,5 @@
 #include "monty.h"
+int stk_qk = 0;
 /**
  * main - driver function for monty program
  * @argc: int num of arguments
@@ -7,16 +8,15 @@
  */
 int main(int argc, char **argv)
 {
-	int stk_qk = 0;
-	stack_t *stack;
+	stack_t *top;
 
-	stack = NULL;
+	top = NULL;
 	if (argc != 2)
 	{
 		printf("USAGE: monty file\n");
-		error_exit(&stack);
+		error_exit(&top);
 	}
-	read_file(argv[1], &stack);
-	free_dlistint(stack);
+	read_file(argv[1], &top);
+	free_dlistint(top);
 	return (0);
 }

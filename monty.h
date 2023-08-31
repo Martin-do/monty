@@ -67,6 +67,9 @@ void free_dlistint(stack_t *head);
 int delete_dnodeint_at_index(stack_t **head, unsigned int index);
 void error_exit(stack_t **stack);
 int isnumber(char *str);
-
-
+int check_push_arg(char *data, int line_num, stack_t **top);
+void push_stack(stack_t **top, unsigned int n);
+int isStringInList(const char *target, const char *stringList[], int listSize);
+int opcodeOrNot(char *string);
+void execute(char *opcode, char *data, int line_count, stack_t **top, instruct_func s);
 #endif /* MONTY_H */

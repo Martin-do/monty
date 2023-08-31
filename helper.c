@@ -21,10 +21,11 @@ int isnumber(char *str)
 {
 	unsigned int i;
 
+	/*printf("i am in isnumber and data here is: %ss\n", str);*/
 	if (str == NULL)
 		return (0);
 	i = 0;
-	while (str[i])
+	while (str[i] && str[i] != '$' && str[i + 1] != '\n')
 	{
 		if (str[0] == '-')
 		{
@@ -104,4 +105,28 @@ void _rotr(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 		runner2 = runner2->next;
 
 	}
+}
+
+
+/**
+ * opcodeOrNot - function that checks if command is an opcode
+ * @string: command extracted from line
+ * Return: returns 0 if string is an opcode or 1 if not
+*/
+int opcodeOrNot(char *string)
+{
+	int listSize;
+
+	const char *stringList[] = {
+		"pall", "push", "pint", "pop", "swap",
+		"pchar", "add", "sub", "mul", "div", "mod",
+		"nop", "rotl", "rotr", "pstr", "stack", "queue"
+		};
+	listSize = sizeof(stringList) / sizeof(stringList[0]);
+
+
+	if (isStringInList(string, stringList, listSize))
+		return (0);
+
+	return (1);
 }
